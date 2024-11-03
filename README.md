@@ -23,6 +23,8 @@ Your app is ready to be deployed!
 
 # Dependencies
 
+### React Icons - https://www.npmjs.com/package/react-icons
+    npm i react-icons
 
 
 ### Shadcn/UI - https://ui.shadcn.com/docs/installation/next
