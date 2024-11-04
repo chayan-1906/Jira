@@ -26,6 +26,9 @@ Your app is ready to be deployed!
 ### React Icons - https://www.npmjs.com/package/react-icons
     npm i react-icons
 
+### Hono.js - https://hono.dev/docs/
+    npm i hono@latest
+
 
 ### Shadcn/UI - https://ui.shadcn.com/docs/installation/next
     npx shadcn-ui@latest init
