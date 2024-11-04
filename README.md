@@ -29,6 +29,13 @@ Your app is ready to be deployed!
 ### Hono.js - https://hono.dev/docs/
     npm i hono@latest
 
+### Hono Zod Validator - https://www.npmjs.com/package/@hono/zod-validator
+    npm i @hono/zod-validator
+
+### Tanstack React Query - https://www.npmjs.com/package/@tanstack/react-query
+    npm i @tanstack/react-query
+
+
 
 ### Shadcn/UI - https://ui.shadcn.com/docs/installation/next
     npx shadcn-ui@latest init

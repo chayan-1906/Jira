@@ -12,23 +12,27 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/ui/form";
 import Link from "next/link";
 import Routes from "@/utils/Routes";
-
-const formSchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(1, 'Required'),
-});
+import {useLogin} from "@/features/auth/api/use-login";
+import {loginSchema} from "@/features/auth/schemas";
 
 function SignInCard() {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const {mutate} = useLogin();
+
+    const form = useForm<z.infer<typeof loginSchema>>({
+        resolver: zodResolver(loginSchema),
         defaultValues: {
             email: '',
             password: '',
+            // code: 0,
         },
     });
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
+    const onSubmit = (values: z.infer<typeof loginSchema>) => {
+        console.log('onSubmit in sign-in card');
         console.log({values});
+        mutate({
+            json: values,
+        });
     }
 
     return (
@@ -74,7 +78,7 @@ function SignInCard() {
                             )}
                         />
 
-                        <Button disabled={false} size={'lg'} className={'w-full'}>Login</Button>
+                        <Button disabled={false} size={'lg'} className={'w-full'} onClick={form.handleSubmit(onSubmit)}>Login</Button>
                     </form>
                 </Form>
             </CardContent>

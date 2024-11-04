@@ -12,16 +12,14 @@ import {z} from "zod";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/ui/form";
-
-const formSchema = z.object({
-    name: z.string().trim().min(1, 'Required'),
-    email: z.string().email(),
-    password: z.string().trim().min(8, 'Minimum of 8 characters required'),
-});
+import {registerSchema} from "@/features/auth/schemas";
+import {useRegister} from "@/features/auth/api/use-register";
 
 function SignUpCard() {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const {mutate} = useRegister();
+
+    const form = useForm<z.infer<typeof registerSchema>>({
+        resolver: zodResolver(registerSchema),
         defaultValues: {
             name: '',
             email: '',
@@ -29,8 +27,12 @@ function SignUpCard() {
         },
     });
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
+    const onSubmit = (values: z.infer<typeof registerSchema>) => {
+        console.log('onSubmit in sign-in card');
         console.log({values});
+        mutate({
+            json: values,
+        });
     }
 
     return (
@@ -91,7 +93,7 @@ function SignUpCard() {
                             )}
                         />
 
-                        <Button disabled={false} size={'lg'} className={'w-full'}>Login</Button>
+                        <Button disabled={false} size={'lg'} className={'w-full'}>Sign Up</Button>
                     </form>
                 </Form>
             </CardContent>
@@ -100,11 +102,11 @@ function SignUpCard() {
                 <DottedSeparator/>
             </div>
 
-            {/** sign with socials */}
+            {/** sign up with socials */}
             <CardContent className={'flex flex-col p-7 gap-y-4'}>
-                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={false}><FcGoogle className={'mr-2'}/>Login with Google</Button>
+                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={false}><FcGoogle className={'mr-2'}/>Sign Up with Google</Button>
                 {/* eslint-disable-next-line react/jsx-no-undef */}
-                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={false}><FaGithub className={'mr-2'}/>Login with GitHub</Button>
+                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={false}><FaGithub className={'mr-2'}/>Sign Up with GitHub</Button>
             </CardContent>
 
             <div className={'px-7'}>
