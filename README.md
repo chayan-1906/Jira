@@ -35,6 +35,11 @@ Your app is ready to be deployed!
 ### Tanstack React Query - https://www.npmjs.com/package/@tanstack/react-query
     npm i @tanstack/react-query
 
+### Appwrite - https://www.npmjs.com/package/node-appwrite
+    npm i node-appwrite
+
+### Server only - https://www.npmjs.com/package/server-only
+    npm i server-only
 
 
 ### Shadcn/UI - https://ui.shadcn.com/docs/installation/next
