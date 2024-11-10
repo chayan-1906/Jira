@@ -16,7 +16,7 @@ import {useLogin} from "@/features/auth/api/use-login";
 import {loginSchema} from "@/features/auth/schemas";
 
 function SignInCard() {
-    const {mutate} = useLogin();
+    const {mutate, isPending} = useLogin();
 
     const form = useForm<z.infer<typeof loginSchema>>({
         resolver: zodResolver(loginSchema),
@@ -57,7 +57,7 @@ function SignInCard() {
                             render={({field}) => (
                                 <FormItem>
                                     <FormControl>
-                                        <Input type={'email'} placeholder={'Enter email address...'} {...field}/>
+                                        <Input type={'email'} disabled={isPending} placeholder={'Enter email address...'} {...field}/>
                                     </FormControl>
                                     <FormMessage/>
                                 </FormItem>
@@ -71,14 +71,14 @@ function SignInCard() {
                             render={({field}) => (
                                 <FormItem>
                                     <FormControl>
-                                        <Input type={'password'} placeholder={'Enter your password...'} {...field}/>
+                                        <Input type={'password'} disabled={isPending} placeholder={'Enter your password...'} {...field}/>
                                     </FormControl>
                                     <FormMessage/>
                                 </FormItem>
                             )}
                         />
 
-                        <Button disabled={false} size={'lg'} className={'w-full'} onClick={form.handleSubmit(onSubmit)}>Login</Button>
+                        <Button disabled={isPending} size={'lg'} className={'w-full'}>Login</Button>
                     </form>
                 </Form>
             </CardContent>
@@ -89,9 +89,8 @@ function SignInCard() {
 
             {/** sign with socials */}
             <CardContent className={'flex flex-col p-7 gap-y-4'}>
-                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={false}><FcGoogle className={'mr-2'}/>Login with Google</Button>
-                {/* eslint-disable-next-line react/jsx-no-undef */}
-                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={false}><FaGithub className={'mr-2'}/>Login with GitHub</Button>
+                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={isPending}><FcGoogle className={'mr-2'}/>Login with Google</Button>
+                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={isPending}><FaGithub className={'mr-2'}/>Login with GitHub</Button>
             </CardContent>
 
             <div className={'px-7'}>

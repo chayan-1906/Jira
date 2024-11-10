@@ -16,7 +16,7 @@ import {registerSchema} from "@/features/auth/schemas";
 import {useRegister} from "@/features/auth/api/use-register";
 
 function SignUpCard() {
-    const {mutate} = useRegister();
+    const {mutate, isPending} = useRegister();
 
     const form = useForm<z.infer<typeof registerSchema>>({
         resolver: zodResolver(registerSchema),
@@ -60,7 +60,7 @@ function SignUpCard() {
                             render={({field}) => (
                                 <FormItem>
                                     <FormControl>
-                                        <Input type={'text'} placeholder={'Enter your name...'} {...field}/>
+                                        <Input type={'text'} disabled={isPending} placeholder={'Enter your name...'} {...field}/>
                                     </FormControl>
                                     <FormMessage/>
                                 </FormItem>
@@ -73,7 +73,7 @@ function SignUpCard() {
                             render={({field}) => (
                                 <FormItem>
                                     <FormControl>
-                                        <Input type={'email'} placeholder={'Enter email address...'} {...field}/>
+                                        <Input type={'email'} disabled={isPending} placeholder={'Enter email address...'} {...field}/>
                                     </FormControl>
                                     <FormMessage/>
                                 </FormItem>
@@ -86,14 +86,14 @@ function SignUpCard() {
                             render={({field}) => (
                                 <FormItem>
                                     <FormControl>
-                                        <Input type={'password'} placeholder={'Enter your password...'} {...field}/>
+                                        <Input type={'password'} disabled={isPending} placeholder={'Enter your password...'} {...field}/>
                                     </FormControl>
                                     <FormMessage/>
                                 </FormItem>
                             )}
                         />
 
-                        <Button disabled={false} size={'lg'} className={'w-full'}>Sign Up</Button>
+                        <Button disabled={isPending} size={'lg'} className={'w-full'}>Sign Up</Button>
                     </form>
                 </Form>
             </CardContent>
@@ -104,9 +104,8 @@ function SignUpCard() {
 
             {/** sign up with socials */}
             <CardContent className={'flex flex-col p-7 gap-y-4'}>
-                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={false}><FcGoogle className={'mr-2'}/>Sign Up with Google</Button>
-                {/* eslint-disable-next-line react/jsx-no-undef */}
-                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={false}><FaGithub className={'mr-2'}/>Sign Up with GitHub</Button>
+                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={isPending}><FcGoogle className={'mr-2'}/>Sign Up with Google</Button>
+                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={isPending}><FaGithub className={'mr-2'}/>Sign Up with GitHub</Button>
             </CardContent>
 
             <div className={'px-7'}>
