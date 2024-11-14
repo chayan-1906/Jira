@@ -4,6 +4,12 @@ const Routes = {
 
     homePath: '/',
 
+    tasksPath: '/tasks',
+
+    settingsPath: '/settings',
+
+    membersPath: '/members',
+
     /** external urls */
     privacy: '/privacy',
     terms: '/terms',

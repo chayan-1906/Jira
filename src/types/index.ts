@@ -15,8 +15,13 @@ export interface AdditionalContext {
         user: Models.User<Models.Preferences>;
     }
 }
+
 /** layout props */
 export interface AuthLayoutProps {
+    children: React.ReactNode;
+}
+
+export interface DashboardLayoutProps {
     children: React.ReactNode;
 }
 

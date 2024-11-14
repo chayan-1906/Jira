@@ -1,4 +1,3 @@
-import UserButton from "@/features/auth/components/user-button";
 import {getCurrent} from "@/features/auth/actions";
 import {redirect} from "next/navigation";
 import Routes from "@/utils/Routes";
@@ -12,7 +11,7 @@ async function Home() {
 
     return (
         <div className={'flex flex-col gap-3 p-3'}>
-            <UserButton/>
+            This is a home page
         </div>
     );
 }
