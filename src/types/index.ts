@@ -41,3 +41,9 @@ export interface DottedSeparatorProps {
 export interface CreateWorkspaceFormProps {
     onCancel?: () => void;
 }
+
+export interface WorkspaceAvatarProps {
+    image?: string;
+    name: string;
+    className?: string;
+}

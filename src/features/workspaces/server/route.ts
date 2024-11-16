@@ -6,6 +6,19 @@ import {DATABASE_ID, IMAGES_BUCKET_ID, WORKSPACES_ID} from "@/config";
 import {ID} from "node-appwrite";
 
 const app = new Hono()
+    .get('/',
+        sessionMiddleware,
+        async (c) => {
+            const databases = c.get('databases');
+
+            const workspaces = await databases.listDocuments(
+                DATABASE_ID,
+                WORKSPACES_ID,
+            );
+
+            return c.json({data: workspaces});
+        },
+    )
     .post(
         '/',
         zValidator('form', createWorkspaceSchema),
@@ -19,6 +32,8 @@ const app = new Hono()
 
             let uploadedImageUrl: string | undefined;
 
+            // console.log('image instanceof', typeof (image));
+
             if (image instanceof File) {
                 const file = await storage.createFile(
                     IMAGES_BUCKET_ID,
@@ -31,7 +46,8 @@ const app = new Hono()
                     file.$id,
                 );
 
-                uploadedImageUrl = `data:image/png;base64,${Buffer.from(arrayBuffer).toString()}`;
+                uploadedImageUrl = `data:image/png;base64,${Buffer.from(arrayBuffer).toString('base64')}`;
+                // console.log('uploadedImageUrl:', uploadedImageUrl);
             }
 
             const workspace = await databases.createDocument(
@@ -46,6 +62,7 @@ const app = new Hono()
             );
 
             return c.json({data: workspace});
+            // return c.json({});
         },
     );
 

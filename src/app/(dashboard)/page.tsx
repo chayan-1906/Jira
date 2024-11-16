@@ -1,7 +1,7 @@
 import {getCurrent} from "@/features/auth/actions";
 import {redirect} from "next/navigation";
 import Routes from "@/utils/Routes";
-import CreateWorkspaceForm from "@/features/workspaces/create-workspace-form";
+import CreateWorkspaceForm from "@/features/workspaces/components/create-workspace-form";
 
 async function Home() {
     const user = await getCurrent();
