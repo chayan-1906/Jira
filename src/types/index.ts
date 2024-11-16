@@ -1,5 +1,5 @@
 import React from "react";
-import {Models, Account as AccountType, Databases as DatabasesType, Storage as StorageType, Users as UsersType,} from "node-appwrite";
+import {Account as AccountType, Databases as DatabasesType, Models, Storage as StorageType, Users as UsersType,} from "node-appwrite";
 
 /** tanstack-query props */
 export interface QueryProviderProps {
@@ -36,4 +36,8 @@ export interface DottedSeparatorProps {
     dotSize?: string;
     gapSize?: string;
     direction?: 'horizontal' | 'vertical';
+}
+
+export interface CreateWorkspaceFormProps {
+    onCancel?: () => void;
 }
