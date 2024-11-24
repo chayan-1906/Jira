@@ -25,6 +25,10 @@ export interface DashboardLayoutProps {
     children: React.ReactNode;
 }
 
+export interface StandaloneLayoutProps {
+    children: React.ReactNode;
+}
+
 /** screen props */
 
 

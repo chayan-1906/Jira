@@ -1,8 +1,9 @@
+import CreateWorkspaceForm from "@/features/workspaces/components/create-workspace-form";
 import {getCurrent} from "@/features/auth/actions";
 import {redirect} from "next/navigation";
 import Routes from "@/utils/Routes";
 
-async function WorkSpaceIdPage() {
+async function WorkspaceCreatePage() {
     const user = await getCurrent();
 
     if (!user) {
@@ -10,11 +11,10 @@ async function WorkSpaceIdPage() {
     }
 
     return (
-        <div>
-            Workspace ID Page -
-            {/*{params.workspaceId}*/}
+        <div className={'w-full lg:max-w-xl'}>
+            <CreateWorkspaceForm/>
         </div>
     );
 }
 
-export default WorkSpaceIdPage;
+export default WorkspaceCreatePage;
