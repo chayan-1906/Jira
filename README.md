@@ -41,6 +41,12 @@ Your app is ready to be deployed!
 ### Server only - https://www.npmjs.com/package/server-only
     npm i server-only
 
+### React Use - https://www.npmjs.com/package/react-use
+    npm i react-use
+
+### Nuqs - https://www.npmjs.com/package/nuqs
+    npm install nuqs@1.19.1 --legacy-peer-deps
+
 
 ### Shadcn/UI - https://ui.shadcn.com/docs/installation/next
     npx shadcn-ui@latest init

@@ -47,3 +47,9 @@ export interface WorkspaceAvatarProps {
     name: string;
     className?: string;
 }
+
+export interface ResponsiveModalProps {
+    children: React.ReactNode;
+    open: boolean;
+    onOpenChange: (open: boolean) => void;
+}

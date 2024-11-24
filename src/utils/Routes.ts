@@ -4,6 +4,9 @@ const Routes = {
 
     homePath: '/',
 
+    createWorkspacePath: '/workspaces/create',
+    workspaceIdPath: (workspaceId: string) => `/workspaces/${workspaceId}`,
+
     tasksPath: '/tasks',
 
     settingsPath: '/settings',

@@ -1,7 +1,7 @@
 import {getCurrent} from "@/features/auth/actions";
 import {redirect} from "next/navigation";
 import Routes from "@/utils/Routes";
-import CreateWorkspaceForm from "@/features/workspaces/components/create-workspace-form";
+import {getWorkspaces} from "@/features/workspaces/actions";
 
 async function Home() {
     const user = await getCurrent();
@@ -10,11 +10,12 @@ async function Home() {
         redirect(Routes.signInPath);
     }
 
-    return (
-        <div className={'bg-neutral-500  p-4 h-full'}>
-            <CreateWorkspaceForm/>
-        </div>
-    );
+    const workspaces = await getWorkspaces();
+    if (workspaces.total === 0) {
+        redirect(Routes.createWorkspacePath);
+    } else {
+        redirect(Routes.workspaceIdPath(workspaces.documents[0].$id));
+    }
 }
 
 export default Home;

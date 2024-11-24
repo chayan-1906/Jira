@@ -15,10 +15,13 @@ import React, {useCallback, useRef} from "react";
 import Image from "next/image";
 import {Avatar, AvatarFallback} from "@/components/ui/avatar";
 import {ImageIcon} from "lucide-react";
+import {useRouter} from "next/navigation";
+import Routes from "@/utils/Routes";
 
 function CreateWorkspaceForm({onCancel}: CreateWorkspaceFormProps) {
     const {mutate, isPending} = useCreateWorkspace();
     const inputRef = useRef<HTMLInputElement>(null);
+    const router = useRouter();
 
     const form = useForm<z.infer<typeof createWorkspaceSchema>>({
         resolver: zodResolver(createWorkspaceSchema),
@@ -41,9 +44,11 @@ function CreateWorkspaceForm({onCancel}: CreateWorkspaceFormProps) {
             image: values.image instanceof File ? values.image : '',
         };
         mutate({form: finalValues}, {
-            onSuccess: () => {
+            onSuccess: ({data}) => {
+                // onSuccess is never getting triggered
+                console.log('data:', data);
                 form.reset();
-                // TODO: redirect to the created workspace
+                router.push(Routes.workspaceIdPath(data.$id));
             }
         });
     }
