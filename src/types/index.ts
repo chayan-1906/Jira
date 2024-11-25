@@ -1,5 +1,6 @@
 import React from "react";
-import {Account as AccountType, Databases as DatabasesType, Models, Storage as StorageType, Users as UsersType,} from "node-appwrite";
+import {Account as AccountType, Databases, Databases as DatabasesType, Models, Storage as StorageType, Users as UsersType,} from "node-appwrite";
+import {Workspace} from "@/features/workspaces/types";
 
 /** tanstack-query props */
 export interface QueryProviderProps {
@@ -14,6 +15,16 @@ export interface AdditionalContext {
         users: UsersType;
         user: Models.User<Models.Preferences>;
     }
+}
+
+export interface GetMemberProps {
+    databases: Databases;
+    workspaceId: string;
+    userId: string;
+}
+
+export interface GetWorkspaceProps {
+    workspaceId: string;
 }
 
 /** layout props */
@@ -56,4 +67,15 @@ export interface ResponsiveModalProps {
     children: React.ReactNode;
     open: boolean;
     onOpenChange: (open: boolean) => void;
+}
+
+export interface EditWorkspaceFormProps {
+    initialValues: Workspace;
+    onCancel?: () => void;
+}
+
+export interface WorkspaceIdSettingsProps {
+    params: {
+        workspaceId: string;
+    };
 }

@@ -2,34 +2,31 @@ import {InferRequestType, InferResponseType} from "hono";
 import {client} from "@/lib/rpc";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {toast} from 'sonner';
-import {useRouter} from "next/navigation";
-import Routes from "@/utils/Routes";
 
-type ResponseType = InferResponseType<typeof client.api.workspaces['$post']>;
-type RequestType = InferRequestType<typeof client.api.workspaces['$post']>;
+type ResponseType = InferResponseType<typeof client.api.workspaces[':workspaceId']['$patch'], 200>;
+type RequestType = InferRequestType<typeof client.api.workspaces[':workspaceId']['$patch']>;
 
-export const useCreateWorkspace = () => {
+export const useUpdateWorkspace = () => {
     const queryClient = useQueryClient();
-    const router = useRouter();
 
     const mutation = useMutation<ResponseType, Error, RequestType>({
-        mutationFn: async ({form}) => {
-            const response = await client.api.workspaces['$post']({form});
+        mutationFn: async ({form, param}) => {
+            const response = await client.api.workspaces[':workspaceId']['$patch']({form, param});
 
             if (!response.ok) {
-                throw new Error('Unable to create workspace');
+                throw new Error('Unable to update workspace');
             }
 
             return await response.json();
         },
         onSuccess: ({data}) => {
-            toast.success('Workspace created');
+            toast.success('Workspace updated');
             const workspaces = queryClient.invalidateQueries({queryKey: ['workspaces']});
-            router.push(Routes.workspaceIdPath(data.$id));
+            queryClient.invalidateQueries({queryKey: ['workspaces', data.$id]});
             console.log('workspaces from onSuccess:', workspaces);
         },
         onError: () => {
-            toast.error('Unable to create workspace');
+            toast.error('Unable to update workspace');
         },
     });
 
