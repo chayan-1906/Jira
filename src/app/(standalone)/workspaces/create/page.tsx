@@ -1,5 +1,5 @@
 import CreateWorkspaceForm from "@/features/workspaces/components/create-workspace-form";
-import {getCurrent} from "@/features/auth/actions";
+import {getCurrent} from "@/features/auth/queries";
 import {redirect} from "next/navigation";
 import Routes from "@/utils/Routes";
 

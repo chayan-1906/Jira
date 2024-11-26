@@ -1,8 +1,8 @@
-import {getCurrent} from "@/features/auth/actions";
+import {getCurrent} from "@/features/auth/queries";
 import {redirect} from "next/navigation";
 import Routes from "@/utils/Routes";
 import {WorkspaceIdSettingsProps} from "@/types";
-import {getWorkspace} from "@/features/workspaces/actions";
+import {getWorkspace} from "@/features/workspaces/queries";
 import EditWorkspaceForm from "@/features/workspaces/components/edit-workspace-form";
 
 async function WorkspaceIdSettingsPage({params}: WorkspaceIdSettingsProps) {
