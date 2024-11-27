@@ -1,4 +1,4 @@
-'use server';
+// 'use server';
 
 import 'server-only';
 import {Account, Client, Databases} from "node-appwrite";

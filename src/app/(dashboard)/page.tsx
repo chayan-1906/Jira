@@ -3,6 +3,8 @@ import {redirect} from "next/navigation";
 import Routes from "@/utils/Routes";
 import {getWorkspaces} from "@/features/workspaces/queries";
 
+export const dynamic = 'force-dynamic';
+
 async function Home() {
     const user = await getCurrent();
 

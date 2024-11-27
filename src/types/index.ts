@@ -75,7 +75,7 @@ export interface EditWorkspaceFormProps {
 }
 
 export interface WorkspaceIdSettingsProps {
-    params: {
+    params: Promise<{
         workspaceId: string;
-    };
+    }>;
 }
