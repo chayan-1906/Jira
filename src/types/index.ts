@@ -31,6 +31,11 @@ export interface GetWorkspaceInfoProps {
     workspaceId: string;
 }
 
+/** hook props */
+export interface UseGetMemberProps {
+    workspaceId: string;
+}
+
 /** layout props */
 export interface AuthLayoutProps {
     children: React.ReactNode;
@@ -64,6 +69,13 @@ export interface WorkspaceIdJoinPageProps {
     }>;
 }
 
+export interface WorkspaceIdMembersPageProps {
+    params: Promise<{
+        workspaceId: string;
+        inviteCode: string;
+    }>;
+}
+
 /** component props */
 export interface DottedSeparatorProps {
     className?: string;
@@ -82,6 +94,12 @@ export interface WorkspaceAvatarProps {
     image?: string;
     name: string;
     className?: string;
+}
+
+export interface MemberAvatarProps {
+    name: string;
+    className?: string;
+    fallbackClassName?: string;
 }
 
 export interface ResponsiveModalProps {

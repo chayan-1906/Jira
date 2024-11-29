@@ -7,8 +7,6 @@ import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import Routes from "@/utils/Routes";
 import {useJoinWorkspace} from "@/features/workspaces/api/use-join-workspace";
-import {useInviteCode} from "@/features/workspaces/hooks/use-invite-code";
-import {useWorkspaceId} from "@/features/workspaces/hooks/use-workspace-id";
 import {useRouter} from "next/navigation";
 
 function JoinWorkspaceForm({initialValues, workspaceId, inviteCode}: JoinWorkspaceFormProps) {
