@@ -27,6 +27,10 @@ export interface GetWorkspaceProps {
     workspaceId: string;
 }
 
+export interface GetWorkspaceInfoProps {
+    workspaceId: string;
+}
+
 /** layout props */
 export interface AuthLayoutProps {
     children: React.ReactNode;
@@ -41,7 +45,24 @@ export interface StandaloneLayoutProps {
 }
 
 /** screen props */
+export interface WorkspaceIdPageProps {
+    params: Promise<{
+        workspaceId: string;
+    }>;
+}
 
+export interface WorkspaceIdSettingsPageProps {
+    params: Promise<{
+        workspaceId: string;
+    }>;
+}
+
+export interface WorkspaceIdJoinPageProps {
+    params: Promise<{
+        workspaceId: string;
+        inviteCode: string;
+    }>;
+}
 
 /** component props */
 export interface DottedSeparatorProps {
@@ -74,8 +95,10 @@ export interface EditWorkspaceFormProps {
     onCancel?: () => void;
 }
 
-export interface WorkspaceIdSettingsProps {
-    params: Promise<{
-        workspaceId: string;
-    }>;
+export interface JoinWorkspaceFormProps {
+    initialValues: {
+        name: string;
+    };
+    inviteCode: string;
+    workspaceId: string;
 }

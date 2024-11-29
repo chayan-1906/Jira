@@ -1,10 +1,8 @@
 'use server';
 
-import {Account, Client, Databases, Query} from "node-appwrite";
-import {cookies} from "next/headers";
-import {AUTH_COOKIE} from "@/features/auth/constants";
+import {Query} from "node-appwrite";
 import {DATABASE_ID, MEMBERS_ID, WORKSPACES_ID} from "@/config";
-import {GetWorkspaceProps} from "@/types";
+import {GetWorkspaceInfoProps, GetWorkspaceProps} from "@/types";
 import {getMember} from "@/features/members/utils";
 import {Workspace} from "@/features/workspaces/types";
 import {createSessionClient} from "@/lib/appwrite";
@@ -45,18 +43,8 @@ export const getWorkspaces = async () => {
 
 export const getWorkspace = async ({workspaceId}: GetWorkspaceProps) => {
     try {
-        const client = new Client()
-            .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || '')
-            .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT || '');
+        const {account, databases} = await createSessionClient();
 
-        const session = (await cookies()).get(AUTH_COOKIE);
-
-        if (!session) return null;
-
-        client.setSession(session.value);
-
-        const databases = new Databases(client);
-        const account = new Account(client);
         const user = await account.get();
 
         const member = await getMember({
@@ -79,6 +67,25 @@ export const getWorkspace = async ({workspaceId}: GetWorkspaceProps) => {
         return workspace;
     } catch (error) {
         console.log('inside catch of getWorkspace: ❌', error);
+        return null;
+    }
+}
+
+export const getWorkspaceInfo = async ({workspaceId}: GetWorkspaceInfoProps) => {
+    try {
+        const {databases} = await createSessionClient();
+
+        const workspace = await databases.getDocument<Workspace>(
+            DATABASE_ID,
+            WORKSPACES_ID,
+            workspaceId,
+        );
+
+        return {
+            name: workspace.name,
+        };
+    } catch (error) {
+        console.log('inside catch of getWorkspaceInfo: ❌', error);
         return null;
     }
 }

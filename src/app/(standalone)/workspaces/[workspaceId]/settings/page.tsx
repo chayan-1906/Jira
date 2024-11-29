@@ -1,13 +1,13 @@
 import {getCurrent} from "@/features/auth/queries";
 import {redirect} from "next/navigation";
 import Routes from "@/utils/Routes";
-import {WorkspaceIdSettingsProps} from "@/types";
+import {WorkspaceIdSettingsPageProps} from "@/types";
 import {getWorkspace} from "@/features/workspaces/queries";
 import EditWorkspaceForm from "@/features/workspaces/components/edit-workspace-form";
 
 export const dynamic = 'force-dynamic';
 
-async function WorkspaceIdSettingsPage({params}: WorkspaceIdSettingsProps) {
+async function WorkspaceIdSettingsPage({params}: WorkspaceIdSettingsPageProps) {
     const user = await getCurrent();
     const {workspaceId} = await params;
 
