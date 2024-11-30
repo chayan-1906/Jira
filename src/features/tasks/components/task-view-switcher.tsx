@@ -1,9 +1,14 @@
+'use client';
+
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {Button} from "@/components/ui/button";
 import {PlusIcon} from "lucide-react";
 import DottedSeparator from "@/components/dotted-separator";
+import {useCreateTaskModal} from "@/features/tasks/hooks/use-create-task-modal";
 
 function TaskViewSwitcher() {
+    const {open} = useCreateTaskModal();
+
     return (
         <Tabs className={'flex-1 w-full border rounded-lg'}>
             <div className={'flex flex-col lg:flex-row gap-y-2 justify-between items-center'}>
@@ -12,7 +17,7 @@ function TaskViewSwitcher() {
                     <TabsTrigger className={'h-8 w-full lg:w-auto'} value={'kanban'}>Kanban</TabsTrigger>
                     <TabsTrigger className={'h-8 w-full lg:w-auto'} value={'calendar'}>Calendar</TabsTrigger>
                 </TabsList>
-                <Button><PlusIcon className={'size-4 mr-2'}/> New</Button>
+                <Button size={'sm'} className={'w-full lg:w-auto'} onClick={open}><PlusIcon className={'size-4 mr-2'}/> New</Button>
             </div>
 
             <DottedSeparator className={'my-4'}/>

@@ -35,6 +35,7 @@ export interface GetWorkspaceInfoProps {
 export interface GetProjectProps {
     projectId: string;
 }
+
 /** hook props */
 export interface UseGetMemberProps {
     workspaceId: string;
@@ -43,6 +44,11 @@ export interface UseGetMemberProps {
 export interface UseGetProjectsProps {
     workspaceId: string;
 }
+
+export interface UseGetTasksProps {
+    workspaceId: string;
+}
+
 /** layout props */
 export interface AuthLayoutProps {
     children: React.ReactNode;
@@ -106,6 +112,13 @@ export interface DottedSeparatorProps {
     direction?: 'horizontal' | 'vertical';
 }
 
+export interface DatePickerProps {
+    value: Date | undefined;
+    onChange: (date: Date) => void;
+    clasName?: string;
+    placeholder?: string;
+}
+
 export interface CreateWorkspaceFormProps {
     onCancel?: () => void;
 }
@@ -155,4 +168,21 @@ export interface ProjectAvatarProps {
 export interface EditProjectFormProps {
     initialValues: Project;
     onCancel?: () => void;
+}
+
+export interface CreateTaskFormWrapperProps {
+    onCancel?: () => void;
+}
+
+export interface CreateTaskFormProps {
+    onCancel?: () => void;
+    projectOptions: {
+        id: string;
+        name: string;
+        imageUrl: string,
+    }[];
+    memberOptions: {
+        id: string;
+        name: string;
+    }[];
 }
