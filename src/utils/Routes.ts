@@ -6,6 +6,8 @@ const Routes = {
 
     createWorkspacePath: '/workspaces/create',
     workspaceIdPath: (workspaceId: string) => `/workspaces/${workspaceId}`,
+    projectIdPath: (workspaceId: string, projectId: string) => `/workspaces/${workspaceId}/projects/${projectId}`,
+    projectSettingsPath: (workspaceId: string, projectId: string) => `/workspaces/${workspaceId}/projects/${projectId}/settings`,
 
     tasksPath: '/tasks',
 

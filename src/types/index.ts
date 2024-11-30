@@ -1,6 +1,7 @@
 import React from "react";
 import {Account as AccountType, Databases, Databases as DatabasesType, Models, Storage as StorageType, Users as UsersType,} from "node-appwrite";
 import {Workspace} from "@/features/workspaces/types";
+import {Project} from "@/features/projects/types";
 
 /** tanstack-query props */
 export interface QueryProviderProps {
@@ -31,11 +32,17 @@ export interface GetWorkspaceInfoProps {
     workspaceId: string;
 }
 
+export interface GetProjectProps {
+    projectId: string;
+}
 /** hook props */
 export interface UseGetMemberProps {
     workspaceId: string;
 }
 
+export interface UseGetProjectsProps {
+    workspaceId: string;
+}
 /** layout props */
 export interface AuthLayoutProps {
     children: React.ReactNode;
@@ -73,6 +80,19 @@ export interface WorkspaceIdMembersPageProps {
     params: Promise<{
         workspaceId: string;
         inviteCode: string;
+    }>;
+}
+
+export interface ProjectIdPageProps {
+    params: Promise<{
+        workspaceId: string;
+        projectId: string;
+    }>;
+}
+
+export interface ProjectIdSettingsPageProps {
+    params: Promise<{
+        projectId: string;
     }>;
 }
 
@@ -119,4 +139,20 @@ export interface JoinWorkspaceFormProps {
     };
     inviteCode: string;
     workspaceId: string;
+}
+
+export interface CreateProjectFormProps {
+    onCancel?: () => void;
+}
+
+export interface ProjectAvatarProps {
+    image?: string;
+    name: string;
+    className?: string;
+    fallbackClassName?: string;
+}
+
+export interface EditProjectFormProps {
+    initialValues: Project;
+    onCancel?: () => void;
 }

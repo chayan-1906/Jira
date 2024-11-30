@@ -15,10 +15,7 @@ async function WorkspaceIdSettingsPage({params}: WorkspaceIdSettingsPageProps) {
         redirect(Routes.signInPath);
     }
 
-    const initialValues = await getWorkspace({workspaceId: workspaceId});
-    if (!initialValues) {
-        redirect(Routes.workspaceIdPath(workspaceId));
-    }
+    const initialValues = await getWorkspace({workspaceId});
 
     return (
         <div className={'w-full lg:max-w-xl'}>
