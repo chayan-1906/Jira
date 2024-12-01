@@ -2,15 +2,42 @@
 
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {Button} from "@/components/ui/button";
-import {PlusIcon} from "lucide-react";
+import {Loader, PlusIcon} from "lucide-react";
 import DottedSeparator from "@/components/dotted-separator";
 import {useCreateTaskModal} from "@/features/tasks/hooks/use-create-task-modal";
+import {useGetTasks} from "@/features/tasks/api/use-get-tasks";
+import {useWorkspaceId} from "@/features/workspaces/hooks/use-workspace-id";
+import {useQueryState} from "nuqs";
+import DataFilters from "@/features/tasks/components/data-filters";
+import {useTaskFilters} from "@/features/tasks/hooks/use-task-filters";
+import {useEffect, useRef} from "react";
+import {useProjectId} from "@/features/projects/hooks/use-project-id";
 
 function TaskViewSwitcher() {
     const {open} = useCreateTaskModal();
+    const workspaceId = useWorkspaceId();
+    const projectIdFromHook = useProjectId();
+    const [{projectId: taskProjectId, status, assigneeId, search, dueDate}, setFilters] = useTaskFilters();
+
+    const projectId = (taskProjectId === null) ? projectIdFromHook : taskProjectId;
+    const {data: tasks, isLoading: isLoadingTasks} = useGetTasks({workspaceId, projectId, status, search, assigneeId, dueDate});
+
+    const [view, setView] = useQueryState('task-view', {
+        defaultValue: 'table',
+    });
+
+    const setFiltersRef = useRef(setFilters);
+
+    useEffect(() => {
+        setFiltersRef.current = setFilters;
+    }, [setFilters]);
+
+    useEffect(() => {
+        setFiltersRef.current({projectId: projectIdFromHook});
+    }, [projectIdFromHook]);
 
     return (
-        <Tabs className={'flex-1 w-full border rounded-lg'}>
+        <Tabs defaultValue={view} onValueChange={setView} className={'flex-1 w-full border rounded-lg p-4'}>
             <div className={'flex flex-col lg:flex-row gap-y-2 justify-between items-center'}>
                 <TabsList className={'w-full lg:w-auto'}>
                     <TabsTrigger className={'h-8 w-full lg:w-auto'} value={'table'}>Table</TabsTrigger>
@@ -21,13 +48,19 @@ function TaskViewSwitcher() {
             </div>
 
             <DottedSeparator className={'my-4'}/>
-            Data filters
+            <DataFilters/>
             <DottedSeparator className={'my-4'}/>
-            <>
-                <TabsContent value={'table'} className={'mt-0'}>Data Table</TabsContent>
-                <TabsContent value={'kanban'} className={'mt-0'}>Data Kanban</TabsContent>
-                <TabsContent value={'calendar'} className={'mt-0'}>Data Calendar</TabsContent>
-            </>
+            {isLoadingTasks ? (
+                <div className={'flex flex-col w-full items-center justify-center border rounded-lg h-[200px]'}>
+                    <Loader className={'size-5 animate-spin text-muted-foreground'}/>
+                </div>
+            ) : (
+                <>
+                    <TabsContent value={'table'} className={'mt-0'}>{JSON.stringify(tasks)}</TabsContent>
+                    <TabsContent value={'kanban'} className={'mt-0'}>Data Kanban</TabsContent>
+                    <TabsContent value={'calendar'} className={'mt-0'}>Data Calendar</TabsContent>
+                </>
+            )}
         </Tabs>
     );
 }

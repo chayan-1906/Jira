@@ -2,6 +2,7 @@ import React from "react";
 import {Account as AccountType, Databases, Databases as DatabasesType, Models, Storage as StorageType, Users as UsersType,} from "node-appwrite";
 import {Workspace} from "@/features/workspaces/types";
 import {Project} from "@/features/projects/types";
+import {TaskStatus} from "@/features/tasks/types";
 
 /** tanstack-query props */
 export interface QueryProviderProps {
@@ -47,6 +48,11 @@ export interface UseGetProjectsProps {
 
 export interface UseGetTasksProps {
     workspaceId: string;
+    projectId?: string | null;
+    status?: TaskStatus | null;
+    search?: string | null;
+    assigneeId?: string | null;
+    dueDate?: string | null;
 }
 
 /** layout props */
@@ -184,5 +190,10 @@ export interface CreateTaskFormProps {
     memberOptions: {
         id: string;
         name: string;
+        email: string;
     }[];
+}
+
+export interface DataFilterProps {
+    hideProjectFilter?: boolean;
 }

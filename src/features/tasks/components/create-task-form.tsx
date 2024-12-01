@@ -20,9 +20,11 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 import MemberAvatar from "@/features/members/components/member-avatar";
 import {TaskStatus} from "@/features/tasks/types";
 import ProjectAvatar from "@/features/projects/components/project-avatar";
+import {useProjectId} from "@/features/projects/hooks/use-project-id";
 
 function CreateTaskForm({onCancel, projectOptions, memberOptions}: CreateTaskFormProps) {
     const workspaceId = useWorkspaceId();
+    const projectId = useProjectId();
     const {mutate, isPending} = useCreateTask();
     const inputRef = useRef<HTMLInputElement>(null);
     const router = useRouter();
@@ -32,6 +34,7 @@ function CreateTaskForm({onCancel, projectOptions, memberOptions}: CreateTaskFor
         defaultValues: {
             name: '',
             workspaceId,
+            projectId,
         },
     });
 
@@ -109,7 +112,7 @@ function CreateTaskForm({onCancel, projectOptions, memberOptions}: CreateTaskFor
                                                     <SelectItem key={member.id} value={member.id}>
                                                         <div className={'flex items-center gap-x-2'}>
                                                             <MemberAvatar className={'size-6'} name={member.name}/>
-                                                            {member.name}
+                                                            {member.name} ({member.email})
                                                         </div>
                                                     </SelectItem>
                                                 ))}
@@ -135,7 +138,7 @@ function CreateTaskForm({onCancel, projectOptions, memberOptions}: CreateTaskFor
                                             <FormMessage/>
                                             <SelectContent>
                                                 <SelectItem value={TaskStatus.BACKLOG}>Backlog</SelectItem>
-                                                <SelectItem value={TaskStatus.TODO}>TODO</SelectItem>
+                                                <SelectItem value={TaskStatus.TODO}>TO DO</SelectItem>
                                                 <SelectItem value={TaskStatus.IN_PROGRESS}>In Progress</SelectItem>
                                                 <SelectItem value={TaskStatus.IN_REVIEW}>In Review</SelectItem>
                                                 <SelectItem value={TaskStatus.DONE}>Done</SelectItem>
@@ -179,7 +182,7 @@ function CreateTaskForm({onCancel, projectOptions, memberOptions}: CreateTaskFor
 
                         <div className={'flex items-center justify-between'}>
                             <Button variant={'destructive'} disabled={isPending} type={'button'} className={cn(!onCancel && 'invisible')} onClick={onCancel}>Cancel</Button>
-                            <Button type={'submit'} disabled={isPending}>Create Project</Button>
+                            <Button type={'submit'} disabled={isPending}>Create Task</Button>
                         </div>
                     </form>
                 </Form>

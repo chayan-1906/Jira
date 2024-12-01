@@ -25,7 +25,7 @@ export const useCreateTask = () => {
         onSuccess: ({data}) => {
             toast.success('Task created');
             const tasks = queryClient.invalidateQueries({queryKey: ['tasks']});
-            router.push(Routes.taskIdPath(data.workspaceId, data.projectId, data.$id));
+            // router.push(Routes.taskIdPath(data.workspaceId, data.projectId, data.$id));
             console.log('task from onSuccess:', tasks);
         },
         onError: () => {
