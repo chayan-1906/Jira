@@ -47,6 +47,9 @@ Your app is ready to be deployed!
 ### Nuqs - https://www.npmjs.com/package/nuqs
     npm install nuqs@1.19.1 --legacy-peer-deps
 
+### React Table - https://www.npmjs.com/package/@tanstack/react-table
+    npm install @tanstack/react-table
+
 
 ### Shadcn/UI - https://ui.shadcn.com/docs/installation/next
     npx shadcn-ui@latest init
@@ -77,4 +80,5 @@ Your app is ready to be deployed!
 ### Checkbox - https://ui.shadcn.com/docs/components/checkbox
     npx shadcn@latest add checkbox
 
-
+### Datatable - https://ui.shadcn.com/docs/components/data-table
+    npx shadcn@latest add table

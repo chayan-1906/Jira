@@ -197,3 +197,14 @@ export interface CreateTaskFormProps {
 export interface DataFilterProps {
     hideProjectFilter?: boolean;
 }
+
+export interface TaskDateProps {
+    value: string;
+    className?: string;
+}
+
+export interface TaskActionProps {
+    id: string;
+    projectId?: string;
+    children: React.ReactNode;
+}

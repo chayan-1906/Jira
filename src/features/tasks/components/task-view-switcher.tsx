@@ -12,6 +12,8 @@ import DataFilters from "@/features/tasks/components/data-filters";
 import {useTaskFilters} from "@/features/tasks/hooks/use-task-filters";
 import {useEffect, useRef} from "react";
 import {useProjectId} from "@/features/projects/hooks/use-project-id";
+import {DataTable} from "@/features/tasks/components/data-table";
+import {columns} from "@/features/tasks/components/columns";
 
 function TaskViewSwitcher() {
     const {open} = useCreateTaskModal();
@@ -56,7 +58,7 @@ function TaskViewSwitcher() {
                 </div>
             ) : (
                 <>
-                    <TabsContent value={'table'} className={'mt-0'}>{JSON.stringify(tasks)}</TabsContent>
+                    <TabsContent value={'table'} className={'mt-0'}><DataTable columns={columns} data={tasks?.documents ?? []}/></TabsContent>
                     <TabsContent value={'kanban'} className={'mt-0'}>Data Kanban</TabsContent>
                     <TabsContent value={'calendar'} className={'mt-0'}>Data Calendar</TabsContent>
                 </>
