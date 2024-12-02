@@ -9,25 +9,18 @@ import DottedSeparator from "@/components/dotted-separator";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
-import React, {useRef} from "react";
-import {useRouter} from "next/navigation";
+import React from "react";
 import {cn} from "@/lib/utils";
-import {useWorkspaceId} from "@/features/workspaces/hooks/use-workspace-id";
 import {createTaskSchema} from "@/features/tasks/schemas";
 import {DatePicker} from "@/components/date-picker";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import MemberAvatar from "@/features/members/components/member-avatar";
 import {TaskStatus} from "@/features/tasks/types";
 import ProjectAvatar from "@/features/projects/components/project-avatar";
-import {useProjectId} from "@/features/projects/hooks/use-project-id";
 import {useUpdateTask} from "@/features/tasks/api/use-update-task";
 
 function UpdateTaskForm({onCancel, projectOptions, memberOptions, initialValues}: UpdateTaskFormProps) {
-    const workspaceId = useWorkspaceId();
-    const projectId = useProjectId();
     const {mutate, isPending} = useUpdateTask();
-    const inputRef = useRef<HTMLInputElement>(null);
-    const router = useRouter();
 
     const form = useForm<z.infer<typeof createTaskSchema>>({
         resolver: zodResolver(createTaskSchema.omit({workspaceId: true, description: true})),
