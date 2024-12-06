@@ -14,6 +14,8 @@ import {useEffect, useRef} from "react";
 import {useProjectId} from "@/features/projects/hooks/use-project-id";
 import {DataTable} from "@/features/tasks/components/data-table";
 import {columns} from "@/features/tasks/components/columns";
+import DataKanban from "@/features/tasks/components/data-kanban";
+import {TaskStatus} from "@/features/tasks/types";
 
 function TaskViewSwitcher() {
     const {open} = useCreateTaskModal();
@@ -35,7 +37,11 @@ function TaskViewSwitcher() {
     }, [setFilters]);
 
     useEffect(() => {
-        setFiltersRef.current({projectId: projectIdFromHook});
+        async function setFiltersRefCurrent() {
+            await setFiltersRef.current({projectId: projectIdFromHook});
+        }
+
+        setFiltersRefCurrent()
     }, [projectIdFromHook]);
 
     return (
@@ -46,7 +52,7 @@ function TaskViewSwitcher() {
                     <TabsTrigger className={'h-8 w-full lg:w-auto'} value={'kanban'}>Kanban</TabsTrigger>
                     <TabsTrigger className={'h-8 w-full lg:w-auto'} value={'calendar'}>Calendar</TabsTrigger>
                 </TabsList>
-                <Button size={'sm'} className={'w-full lg:w-auto'} onClick={open}><PlusIcon className={'size-4 mr-2'}/> New</Button>
+                <Button size={'sm'} className={'w-full lg:w-auto'} onClick={() => open(TaskStatus.TODO)}><PlusIcon className={'size-4 mr-2'}/> New</Button>
             </div>
 
             <DottedSeparator className={'my-4'}/>
@@ -59,7 +65,7 @@ function TaskViewSwitcher() {
             ) : (
                 <>
                     <TabsContent value={'table'} className={'mt-0'}><DataTable columns={columns} data={tasks?.documents ?? []}/></TabsContent>
-                    <TabsContent value={'kanban'} className={'mt-0'}>Data Kanban</TabsContent>
+                    <TabsContent value={'kanban'} className={'mt-0'}><DataKanban data={tasks?.documents ?? []}/></TabsContent>
                     <TabsContent value={'calendar'} className={'mt-0'}>Data Calendar</TabsContent>
                 </>
             )}

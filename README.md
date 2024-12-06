@@ -50,6 +50,12 @@ Your app is ready to be deployed!
 ### React Table - https://www.npmjs.com/package/@tanstack/react-table
     npm install @tanstack/react-table
 
+### Datatable - https://ui.shadcn.com/docs/components/data-table
+    npx shadcn@latest add table
+
+### Hello-Pangea/dnd - https://www.npmjs.com/package/@hello-pangea/dnd
+    npm i @hello-pangea/dnd
+
 
 ### Shadcn/UI - https://ui.shadcn.com/docs/installation/next
     npx shadcn-ui@latest init
@@ -79,6 +85,3 @@ Your app is ready to be deployed!
 
 ### Checkbox - https://ui.shadcn.com/docs/components/checkbox
     npx shadcn@latest add checkbox
-
-### Datatable - https://ui.shadcn.com/docs/components/data-table
-    npx shadcn@latest add table

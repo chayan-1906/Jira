@@ -232,3 +232,12 @@ export interface UpdateTaskFormProps {
     }[];
     initialValues: Task;
 }
+
+export interface DataKanbanProps {
+    data: Task[];
+}
+
+export interface KanbanColumnHeaderProps {
+    board: TaskStatus;
+    taskCount: number;
+}

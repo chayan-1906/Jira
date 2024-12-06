@@ -8,7 +8,7 @@ import ProjectAvatar from "@/features/projects/components/project-avatar";
 import MemberAvatar from "@/features/members/components/member-avatar";
 import TaskDate from "@/features/tasks/components/task-date";
 import {Badge} from "@/components/ui/badge";
-import {snackCaseToTitleCase} from "@/features/members/utils";
+import {snackCaseToUpperCase} from "@/features/members/utils";
 import TasksActions from "@/features/tasks/components/tasks-actions";
 
 export const columns: ColumnDef<Task>[] = [
@@ -107,7 +107,7 @@ export const columns: ColumnDef<Task>[] = [
             const status = row.original.status;
 
             return (
-                <Badge variant={status}>{snackCaseToTitleCase(status)}</Badge>
+                <Badge variant={status}>{snackCaseToUpperCase(status)}</Badge>
             );
         },
     },
