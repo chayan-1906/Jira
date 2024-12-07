@@ -11,6 +11,7 @@ const Routes = {
     taskIdPath: (workspaceId: string, projectId: string, taskId: string) => `/workspaces/${workspaceId}/projects/${projectId}/tasks/${taskId}`,
 
     tasksPath: '/tasks',
+    taskPath: (workspaceId: string, taskId: string) => `/workspaces/${workspaceId}/tasks/${taskId}`,
 
     settingsPath: '/settings',
 

@@ -56,6 +56,9 @@ Your app is ready to be deployed!
 ### Hello-Pangea/dnd - https://www.npmjs.com/package/@hello-pangea/dnd
     npm i @hello-pangea/dnd
 
+### React Big Calendar - https://www.npmjs.com/package/react-big-calendar
+    npm i react-big-calendar --legacy-peer-deps
+
 
 ### Shadcn/UI - https://ui.shadcn.com/docs/installation/next
     npx shadcn-ui@latest init

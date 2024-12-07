@@ -246,3 +246,20 @@ export interface KanbanColumnHeaderProps {
 export interface KanbanCardProps {
     task: Task;
 }
+
+export interface DataCalendarProps {
+    data: Task[];
+}
+
+export interface EventCardProps {
+    title: string;
+    assignee: any;
+    project: Project;
+    status: TaskStatus;
+    id: string;
+}
+
+export interface CustomToolbarProps {
+    date: Date;
+    onNavigate: (action: 'PREV' | 'NEXT' | 'TODAY') => void;
+}

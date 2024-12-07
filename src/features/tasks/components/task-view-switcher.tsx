@@ -17,6 +17,7 @@ import {columns} from "@/features/tasks/components/columns";
 import DataKanban from "@/features/tasks/components/data-kanban";
 import {TaskStatus} from "@/features/tasks/types";
 import {useBulkUpdateTask} from "@/features/tasks/api/use-bulk-update-task";
+import DataCalendar from "@/features/tasks/components/data-calendar";
 
 function TaskViewSwitcher() {
     const {open} = useCreateTaskModal();
@@ -73,7 +74,7 @@ function TaskViewSwitcher() {
                 <>
                     <TabsContent value={'table'} className={'mt-0'}><DataTable columns={columns} data={tasks?.documents ?? []}/></TabsContent>
                     <TabsContent value={'kanban'} className={'mt-0'}><DataKanban data={tasks?.documents ?? []} onChange={onKanbanChange}/></TabsContent>
-                    <TabsContent value={'calendar'} className={'mt-0'}>Data Calendar</TabsContent>
+                    <TabsContent value={'calendar'} className={'mt-0 h-full pb-4'}><DataCalendar data={tasks?.documents ?? []}/></TabsContent>
                 </>
             )}
         </Tabs>
