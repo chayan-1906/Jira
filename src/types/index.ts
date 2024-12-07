@@ -235,9 +235,14 @@ export interface UpdateTaskFormProps {
 
 export interface DataKanbanProps {
     data: Task[];
+    onChange: (tasks: { $id: string; status: TaskStatus; position: number }[]) => void;
 }
 
 export interface KanbanColumnHeaderProps {
     board: TaskStatus;
     taskCount: number;
+}
+
+export interface KanbanCardProps {
+    task: Task;
 }
