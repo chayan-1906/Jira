@@ -15,7 +15,7 @@ export const getMember = async ({databases, workspaceId, userId}: GetMemberProps
     return members.documents[0];
 }
 
-export function snackCaseToUpperCase(string: string) {
+export function snakeCaseToUpperCase(string: string) {
     return string.toLowerCase()
         .replace(/_/g, ' ')
         .replace(/\b\w/g, (char) => char.toUpperCase()).toUpperCase();

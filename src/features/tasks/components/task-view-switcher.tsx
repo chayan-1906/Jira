@@ -18,8 +18,9 @@ import DataKanban from "@/features/tasks/components/data-kanban";
 import {TaskStatus} from "@/features/tasks/types";
 import {useBulkUpdateTask} from "@/features/tasks/api/use-bulk-update-task";
 import DataCalendar from "@/features/tasks/components/data-calendar";
+import {TaskViewSwitcherProps} from "@/types";
 
-function TaskViewSwitcher() {
+function TaskViewSwitcher({hideProjectFilter}: TaskViewSwitcherProps) {
     const {open} = useCreateTaskModal();
     const workspaceId = useWorkspaceId();
     const projectIdFromHook = useProjectId();
@@ -44,14 +45,6 @@ function TaskViewSwitcher() {
         setFiltersRef.current = setFilters;
     }, [setFilters]);
 
-    useEffect(() => {
-        async function setFiltersRefCurrent() {
-            await setFiltersRef.current({projectId: projectIdFromHook});
-        }
-
-        setFiltersRefCurrent()
-    }, [projectIdFromHook]);
-
     return (
         <Tabs defaultValue={view} onValueChange={setView} className={'flex-1 w-full border rounded-lg p-4'}>
             <div className={'flex flex-col lg:flex-row gap-y-2 justify-between items-center'}>
@@ -64,7 +57,7 @@ function TaskViewSwitcher() {
             </div>
 
             <DottedSeparator className={'my-4'}/>
-            <DataFilters/>
+            <DataFilters hideProjectFilter={hideProjectFilter}/>
             <DottedSeparator className={'my-4'}/>
             {isLoadingTasks ? (
                 <div className={'flex flex-col w-full items-center justify-center border rounded-lg h-[200px]'}>

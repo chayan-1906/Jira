@@ -263,3 +263,29 @@ export interface CustomToolbarProps {
     date: Date;
     onNavigate: (action: 'PREV' | 'NEXT' | 'TODAY') => void;
 }
+
+export interface TaskViewSwitcherProps {
+    hideProjectFilter?: boolean;
+}
+
+export interface PageErrorProps {
+    message: string;
+}
+
+export interface TaskBreadcrumbsProps {
+    project: Project;
+    task: Task;
+}
+
+export interface TaskOverviewProps {
+    task: Task;
+}
+
+export interface OverviewPropertyProps {
+    label: string;
+    children: React.ReactNode;
+}
+
+export interface TaskDescriptionProps {
+    task: Task;
+}

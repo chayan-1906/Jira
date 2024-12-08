@@ -9,8 +9,7 @@ import DottedSeparator from "@/components/dotted-separator";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
-import React, {useRef} from "react";
-import {useRouter} from "next/navigation";
+import React from "react";
 import {cn} from "@/lib/utils";
 import {useWorkspaceId} from "@/features/workspaces/hooks/use-workspace-id";
 import {createTaskSchema} from "@/features/tasks/schemas";
@@ -26,8 +25,6 @@ function CreateTaskForm({onCancel, projectOptions, memberOptions}: CreateTaskFor
     const workspaceId = useWorkspaceId();
     const projectId = useProjectId();
     const {mutate, isPending} = useCreateTask();
-    const inputRef = useRef<HTMLInputElement>(null);
-    const router = useRouter();
 
     const form = useForm<z.infer<typeof createTaskSchema>>({
         resolver: zodResolver(createTaskSchema.omit({workspaceId: true})),

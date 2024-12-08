@@ -1,5 +1,5 @@
 import {KanbanColumnHeaderProps} from "@/types";
-import {snackCaseToUpperCase} from "@/features/members/utils";
+import {snakeCaseToUpperCase} from "@/features/members/utils";
 import {TaskStatus} from "@/features/tasks/types";
 import {ReactNode} from "react";
 import {CircleCheckIcon, CircleDashedIcon, CircleDotDashedIcon, CircleDotIcon, CircleIcon, PlusIcon} from "lucide-react";
@@ -32,7 +32,7 @@ function KanbanColumnHeader({board, taskCount}: KanbanColumnHeaderProps) {
         <div className={'flex items-center justify-between px-2 py-1.5'}>
             <div className={'flex items-center gap-x-2'}>
                 {icon}
-                <h2 className={'text-sm font-medium'}>{snackCaseToUpperCase(board)}</h2>
+                <h2 className={'text-sm font-medium'}>{snakeCaseToUpperCase(board)}</h2>
                 <div className={'flex items-center justify-center rounded-md size-5 bg-neutral-200 text-xs text-neutral-700 font-medium'}>{taskCount}</div>
             </div>
             <Button variant={'ghost'} size={'icon'} className={'size-5'} onClick={() => open(board)}>

@@ -29,7 +29,7 @@ function TasksActions({id, projectId, children}: TaskActionProps) {
                 <DropdownMenuContent align={'end'} className={'w-48'}>
                     {/** task details */}
                     <DropdownMenuItem disabled={isPending} className={'font-medium p-[10px]'}>
-                        <Link href={Routes.taskIdPath(workspaceId, projectId, id)} className={'flex gap-2'}>
+                        <Link href={Routes.taskPath(workspaceId, id)} className={'flex gap-2'}>
                             <ExternalLinkIcon className={'size-4 mr-2 stroke-2'}/>
                             Task Details
                         </Link>

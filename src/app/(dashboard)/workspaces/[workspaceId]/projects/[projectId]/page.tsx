@@ -13,7 +13,7 @@ export const dynamic = 'force-dynamic';
 
 async function ProjectIdPage({params}: ProjectIdPageProps) {
     const user = await getCurrent();
-    const {workspaceId, projectId} = await params;
+    const {projectId} = await params;
 
     if (!user) {
         redirect(Routes.signInPath);
@@ -42,7 +42,7 @@ async function ProjectIdPage({params}: ProjectIdPageProps) {
                     </Button>
                 </div>
             </div>
-            <TaskViewSwitcher/>
+            <TaskViewSwitcher hideProjectFilter/>
         </div>
     );
 }
