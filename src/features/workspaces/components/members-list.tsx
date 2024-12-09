@@ -16,7 +16,6 @@ import {useDeleteMember} from "@/features/members/api/use-delete-member";
 import {useUpdateMember} from "@/features/members/api/use-update-member";
 import {MemberRole} from "@/features/members/types";
 import {useConfirm} from "@/hooks/use-confirm";
-import {useRouter} from "next/navigation";
 import {Models} from "node-appwrite";
 import Preferences = Models.Preferences;
 import User = Models.User;
@@ -27,7 +26,6 @@ function MembersList({user}: { user: User<Preferences> }) {
     const {mutate: deleteMember, isPending: isDeletingMember} = useDeleteMember();
     const {mutate: updateMember, isPending: isUpdatingMember} = useUpdateMember();
     const [ConfirmDialog, confirm] = useConfirm('Remove Member', 'This member will be removed from the workspace', 'destructive');
-    const router = useRouter();
 
     const [currentUserRole, setCurrentUserRole] = useState<MemberRole>(MemberRole.MEMBER)
 
@@ -42,12 +40,8 @@ function MembersList({user}: { user: User<Preferences> }) {
         const ok = await confirm();
         if (!ok) return;
 
-        deleteMember({param: {memberId}}, {
-            onSuccess: () => {
-                router.refresh();
-            },
-        });
-    }, [confirm, deleteMember, router]);
+        deleteMember({param: {memberId}});
+    }, [confirm, deleteMember]);
 
     useEffect(() => {
         // console.log('useGetMembers:', data);

@@ -8,11 +8,13 @@ import Link from "next/link";
 import Routes from "@/utils/Routes";
 import {useJoinWorkspace} from "@/features/workspaces/api/use-join-workspace";
 import {useRouter} from "next/navigation";
+import {useWorkspaceId} from "@/features/workspaces/hooks/use-workspace-id";
+import {useInviteCode} from "@/features/workspaces/hooks/use-invite-code";
 
-function JoinWorkspaceForm({initialValues, workspaceId, inviteCode}: JoinWorkspaceFormProps) {
+function JoinWorkspaceForm({initialValues}: JoinWorkspaceFormProps) {
     const {mutate, isPending} = useJoinWorkspace();
-    // const workspaceId = useWorkspaceId();
-    // const inviteCode = useInviteCode();
+    const workspaceId = useWorkspaceId();
+    const inviteCode = useInviteCode();
     const router = useRouter();
 
     const onSubmit = () => {

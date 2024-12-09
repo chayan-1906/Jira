@@ -33,17 +33,21 @@ export interface GetWorkspaceInfoProps {
     workspaceId: string;
 }
 
-export interface GetProjectProps {
-    projectId: string;
-}
-
 /** hook props */
 export interface UseGetMemberProps {
     workspaceId: string;
 }
 
+export interface UseGetWorkspaceInfoProps {
+    workspaceId: string;
+}
+
 export interface UseGetProjectsProps {
     workspaceId: string;
+}
+
+export interface UseGetProjectProps {
+    projectId: string;
 }
 
 export interface UseGetTasksProps {
@@ -79,36 +83,10 @@ export interface WorkspaceIdPageProps {
     }>;
 }
 
-export interface WorkspaceIdSettingsPageProps {
-    params: Promise<{
-        workspaceId: string;
-    }>;
-}
-
 export interface WorkspaceIdJoinPageProps {
     params: Promise<{
         workspaceId: string;
         inviteCode: string;
-    }>;
-}
-
-export interface WorkspaceIdMembersPageProps {
-    params: Promise<{
-        workspaceId: string;
-        inviteCode: string;
-    }>;
-}
-
-export interface ProjectIdPageProps {
-    params: Promise<{
-        workspaceId: string;
-        projectId: string;
-    }>;
-}
-
-export interface ProjectIdSettingsPageProps {
-    params: Promise<{
-        projectId: string;
     }>;
 }
 
@@ -160,8 +138,6 @@ export interface JoinWorkspaceFormProps {
     initialValues: {
         name: string;
     };
-    inviteCode: string;
-    workspaceId: string;
 }
 
 export interface CreateProjectFormProps {

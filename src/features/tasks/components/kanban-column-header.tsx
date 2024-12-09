@@ -35,7 +35,7 @@ function KanbanColumnHeader({board, taskCount}: KanbanColumnHeaderProps) {
                 <h2 className={'text-sm font-medium'}>{snakeCaseToUpperCase(board)}</h2>
                 <div className={'flex items-center justify-center rounded-md size-5 bg-neutral-200 text-xs text-neutral-700 font-medium'}>{taskCount}</div>
             </div>
-            <Button variant={'ghost'} size={'icon'} className={'size-5'} onClick={() => open(board)}>
+            <Button variant={'ghost'} size={'icon'} className={'size-5'} onClick={() => open()}>
                 <PlusIcon className={'size-4 text-neutral-500'}/>
             </Button>
         </div>

@@ -44,7 +44,7 @@ function UpdateTaskForm({onCancel, projectOptions, memberOptions, initialValues}
     return (
         <Card className={'w-full h-full border-none shadow-none'}>
             <CardHeader className={'flex p-7'}>
-                <CardTitle className={'text-xl font-bold'}>Edit a new task</CardTitle>
+                <CardTitle className={'text-xl font-bold'}>Edit task</CardTitle>
             </CardHeader>
 
             <div className={'px-7'}>

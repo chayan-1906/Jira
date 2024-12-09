@@ -73,11 +73,7 @@ function EditWorkspaceForm({initialValues, onCancel}: EditWorkspaceFormProps) {
 
         if (!ok) return;
 
-        resetInviteCode({param: {workspaceId: initialValues.$id}}, {
-            onSuccess: () => {
-                router.refresh();
-            }
-        });
+        resetInviteCode({param: {workspaceId: initialValues.$id}});
     }
 
     const handleDelete = async () => {

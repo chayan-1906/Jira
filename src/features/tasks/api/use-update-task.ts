@@ -10,7 +10,6 @@ type RequestType = InferRequestType<typeof client.api.tasks[':taskId']['$patch']
 
 export const useUpdateTask = () => {
     const queryClient = useQueryClient();
-    const router = useRouter();
     const {close} = useUpdateTaskModal();
 
     const mutation = useMutation<ResponseType, Error, RequestType>({
@@ -28,7 +27,6 @@ export const useUpdateTask = () => {
             const tasks = queryClient.invalidateQueries({queryKey: ['tasks']});
             queryClient.invalidateQueries({queryKey: ['task', data.$id]});
             close();
-            router.refresh();
             console.log('task from onSuccess:', tasks);
         },
         onError: () => {
