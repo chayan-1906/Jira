@@ -50,6 +50,10 @@ export interface UseGetProjectProps {
     projectId: string;
 }
 
+export interface UseGetProjectAnalyticsProps {
+    projectId: string;
+}
+
 export interface UseGetTasksProps {
     workspaceId: string;
     projectId?: string | null;
@@ -264,4 +268,28 @@ export interface OverviewPropertyProps {
 
 export interface TaskDescriptionProps {
     task: Task;
+}
+
+export interface AnalyticsProps {
+    data?: {
+        taskCount: number;
+        taskDifference: number;
+        projectCount?: number;
+        projectDifference?: number;
+        assignedTaskCount: number;
+        assignedTaskDifference: number;
+        completedTaskCount: number;
+        completedTaskDifference: number;
+        incompleteTaskCount?: number;
+        incompleteTaskDifference?: number;
+        overdueTaskCount: number;
+        overdueTaskDifference: number;
+    };
+}
+
+export interface AnalyticsCardProps {
+    title: string;
+    value: number;
+    variant: 'up' | 'down';
+    increaseValue: number;
 }
