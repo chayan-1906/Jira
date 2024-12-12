@@ -3,6 +3,9 @@ import {Account as AccountType, Databases, Databases as DatabasesType, Models, S
 import {Workspace} from "@/features/workspaces/types";
 import {Project} from "@/features/projects/types";
 import {Task, TaskStatus} from "@/features/tasks/types";
+import User = Models.User;
+import Preferences = Models.Preferences;
+import {Member} from "@/features/members/types";
 
 /** tanstack-query props */
 export interface QueryProviderProps {
@@ -52,6 +55,10 @@ export interface UseGetProjectProps {
 
 export interface UseGetProjectAnalyticsProps {
     projectId: string;
+}
+
+export interface UseGetWorkspaceAnalyticsProps {
+    workspaceId: string;
 }
 
 export interface UseGetTasksProps {
@@ -292,4 +299,19 @@ export interface AnalyticsCardProps {
     value: number;
     variant: 'up' | 'down';
     increaseValue: number;
+}
+
+export interface ProjectsListProps {
+    projects: Project[];
+    total: number;
+}
+
+export interface TasksListProps {
+    tasks: Task[];
+    total: number;
+}
+
+export interface MembersListProps {
+    members: Member[];
+    total: number;
 }
