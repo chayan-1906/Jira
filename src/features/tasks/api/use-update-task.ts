@@ -2,7 +2,6 @@ import {InferRequestType, InferResponseType} from "hono";
 import {client} from "@/lib/rpc";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {toast} from 'sonner';
-import {useRouter} from "next/navigation";
 import {useUpdateTaskModal} from "@/features/tasks/hooks/use-update-task-modal";
 
 type ResponseType = InferResponseType<typeof client.api.tasks[':taskId']['$patch'], 200>;

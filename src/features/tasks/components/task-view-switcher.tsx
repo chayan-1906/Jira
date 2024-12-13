@@ -53,7 +53,7 @@ function TaskViewSwitcher({hideProjectFilter}: TaskViewSwitcherProps) {
                     <TabsTrigger className={'h-8 w-full lg:w-auto'} value={'kanban'}>Kanban</TabsTrigger>
                     <TabsTrigger className={'h-8 w-full lg:w-auto'} value={'calendar'}>Calendar</TabsTrigger>
                 </TabsList>
-                <Button size={'sm'} className={'w-full lg:w-auto'} onClick={() => open(TaskStatus.TODO)}><PlusIcon className={'size-4 mr-2'}/> New</Button>
+                <Button size={'sm'} className={'w-full lg:w-auto'} onClick={open}><PlusIcon className={'size-4 mr-2'}/> New</Button>
             </div>
 
             <DottedSeparator className={'my-4'}/>

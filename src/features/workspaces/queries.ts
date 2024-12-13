@@ -3,6 +3,7 @@
 import {Query} from "node-appwrite";
 import {DATABASE_ID, MEMBERS_ID, WORKSPACES_ID} from "@/config";
 import {createSessionClient} from "@/lib/appwrite";
+import {Workspace} from "@/features/workspaces/types";
 
 export const getWorkspaces = async () => {
     const {account, databases} = await createSessionClient();
@@ -21,7 +22,7 @@ export const getWorkspaces = async () => {
 
     const workspaceIds = members.documents.map((member) => member.workspaceId);
 
-    const workspaces = await databases.listDocuments(
+    const workspaces = await databases.listDocuments<Workspace>(
         DATABASE_ID,
         WORKSPACES_ID,
         [
@@ -31,5 +32,4 @@ export const getWorkspaces = async () => {
     );
 
     return workspaces;
-
 }

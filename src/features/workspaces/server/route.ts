@@ -13,7 +13,8 @@ import {endOfMonth, startOfMonth, subMonths} from "date-fns";
 import {TaskStatus} from "@/features/tasks/types";
 
 const app = new Hono()
-    .get('/',
+    .get(
+        '/',
         sessionMiddleware,
         async (c) => {
             const user = c.get('user');
@@ -43,7 +44,8 @@ const app = new Hono()
             return c.json({data: workspaces});
         },
     )
-    .get('/:workspaceId',
+    .get(
+        '/:workspaceId',
         sessionMiddleware,
         async (c) => {
             const user = c.get('user');
@@ -69,7 +71,8 @@ const app = new Hono()
             return c.json({data: workspace});
         },
     )
-    .get('/:workspaceId/info',
+    .get(
+        '/:workspaceId/info',
         sessionMiddleware,
         async (c) => {
             const databases = c.get('databases');

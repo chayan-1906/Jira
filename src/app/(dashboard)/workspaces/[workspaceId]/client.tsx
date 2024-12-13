@@ -5,7 +5,6 @@ import {useGetWorkspaceAnalytics} from "@/features/workspaces/api/use-get-worksp
 import {useGetTasks} from "@/features/tasks/api/use-get-tasks";
 import {useGetProjects} from "@/features/projects/api/use-get-projects";
 import {useGetMembers} from "@/features/members/api/use-get-members";
-import {useCreateProjectModal} from "@/features/projects/hooks/use-create-project-modal";
 import PageLoader from "@/components/page-loader";
 import PageError from "@/components/page-error";
 import Analytics from "@/components/analytics";
@@ -19,8 +18,6 @@ function ClientWorkspaceId() {
     const {data: tasks, isLoading: isLoadingTasks} = useGetTasks({workspaceId});
     const {data: projects, isLoading: isLoadingProjects} = useGetProjects({workspaceId});
     const {data: members, isLoading: isLoadingMembers} = useGetMembers({workspaceId});
-
-    const {open: createProject} = useCreateProjectModal();
 
     const isLoading = isLoadingAnalytics || isLoadingTasks || isLoadingProjects || isLoadingMembers;
 

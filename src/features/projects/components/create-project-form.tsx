@@ -13,8 +13,6 @@ import React, {useCallback, useRef} from "react";
 import Image from "next/image";
 import {Avatar, AvatarFallback} from "@/components/ui/avatar";
 import {ImageIcon} from "lucide-react";
-import {useRouter} from "next/navigation";
-import Routes from "@/utils/Routes";
 import {cn} from "@/lib/utils";
 import {useCreateProject} from "@/features/projects/api/use-create-project";
 import {createProjectSchema} from "@/features/projects/schemas";
@@ -24,7 +22,6 @@ function CreateProjectForm({onCancel}: CreateProjectFormProps) {
     const workspaceId = useWorkspaceId();
     const {mutate, isPending} = useCreateProject();
     const inputRef = useRef<HTMLInputElement>(null);
-    const router = useRouter();
 
     const form = useForm<z.infer<typeof createProjectSchema>>({
         resolver: zodResolver(createProjectSchema.omit({workspaceId: true})),

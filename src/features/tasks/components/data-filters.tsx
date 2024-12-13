@@ -27,7 +27,7 @@ function DataFilters({hideProjectFilter}: DataFilterProps) {
         email: member.email,
     }));
 
-    const [{projectId: taskProjectId, status, assigneeId, search, dueDate}, setFilters] = useTaskFilters();
+    const [{projectId: taskProjectId, status, assigneeId, dueDate}, setFilters] = useTaskFilters();
     const projectId = (taskProjectId === null) ? projectIdFromHook : taskProjectId;
 
     const onStatusChange = (value: string) => setFilters({status: value === 'all' ? null : value as TaskStatus})

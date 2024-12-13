@@ -3,8 +3,6 @@ import {Account as AccountType, Databases, Databases as DatabasesType, Models, S
 import {Workspace} from "@/features/workspaces/types";
 import {Project} from "@/features/projects/types";
 import {Task, TaskStatus} from "@/features/tasks/types";
-import User = Models.User;
-import Preferences = Models.Preferences;
 import {Member} from "@/features/members/types";
 
 /** tanstack-query props */
@@ -38,6 +36,10 @@ export interface GetWorkspaceInfoProps {
 
 /** hook props */
 export interface UseGetMemberProps {
+    workspaceId: string;
+}
+
+export interface UseGetWorkspaceProps {
     workspaceId: string;
 }
 
