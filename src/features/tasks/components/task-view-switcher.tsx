@@ -23,10 +23,10 @@ import {TaskViewSwitcherProps} from "@/types";
 function TaskViewSwitcher({hideProjectFilter}: TaskViewSwitcherProps) {
     const {open} = useCreateTaskModal();
     const workspaceId = useWorkspaceId();
-    const projectIdFromHook = useProjectId();
+    const projectIdFromParam = useProjectId();
     const [{projectId: taskProjectId, status, assigneeId, search, dueDate}, setFilters] = useTaskFilters();
 
-    const projectId = (taskProjectId === null) ? projectIdFromHook : taskProjectId;
+    const projectId = (taskProjectId === null) ? projectIdFromParam : taskProjectId;
     const {data: tasks, isLoading: isLoadingTasks} = useGetTasks({workspaceId, projectId, status, search, assigneeId, dueDate});
 
     const {mutate: bulkUpdate} = useBulkUpdateTask();

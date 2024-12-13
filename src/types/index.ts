@@ -242,7 +242,7 @@ export interface DataCalendarProps {
 
 export interface EventCardProps {
     title: string;
-    assignee: any;
+    assignee: Member;
     project: Project;
     status: TaskStatus;
     id: string;

@@ -14,6 +14,7 @@ import Link from "next/link";
 import Routes from "@/utils/Routes";
 import {useLogin} from "@/features/auth/api/use-login";
 import {loginSchema} from "@/features/auth/schemas";
+import {signUpWithGithub, signUpWithGoogle} from "@/lib/oauth";
 
 function SignInCard() {
     const {mutate, isPending} = useLogin();
@@ -89,8 +90,8 @@ function SignInCard() {
 
             {/** sign with socials */}
             <CardContent className={'flex flex-col p-7 gap-y-4'}>
-                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={isPending}><FcGoogle className={'mr-2'}/>Login with Google</Button>
-                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={isPending}><FaGithub className={'mr-2'}/>Login with GitHub</Button>
+                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={isPending} onClick={() => signUpWithGoogle()}><FcGoogle className={'mr-2'}/>Login with Google</Button>
+                <Button variant={'secondary'} size={'lg'} className={'w-full'} disabled={isPending} onClick={() => signUpWithGithub()}><FaGithub className={'mr-2'}/>Login with GitHub</Button>
             </CardContent>
 
             <div className={'px-7'}>
