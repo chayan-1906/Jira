@@ -32,14 +32,15 @@ export const columns: ColumnDef<Task>[] = [
     },
     {
         accessorKey: 'project',
-        header: ({column}) => {
+        header: 'Project',
+        /*header: ({column}) => {
             return (
                 <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
                     Project
                     <ArrowUpDown className="ml-2 h-4 w-4"/>
                 </Button>
             );
-        },
+        },*/
         cell: ({row}) => {
             const project = row.original.project;
 
@@ -113,6 +114,7 @@ export const columns: ColumnDef<Task>[] = [
     },
     {
         accessorKey: 'actions',
+        header: 'Actions',
         cell: ({row}) => {
             const id = row.original.$id;
             const projectId = row.original.projectId;

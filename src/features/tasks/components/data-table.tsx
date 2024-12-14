@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {ColumnDef, ColumnFiltersState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable} from "@tanstack/react-table";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
@@ -30,7 +30,7 @@ export function DataTable<TData, TValue>({columns, data}: DataTableProps<TData, 
         <div className={''}>
             <div className="flex items-center py-4">
                 <Input
-                    placeholder="Filter tasks..."
+                    placeholder="Filter tasks by name..."
                     value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
                     onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
                     className="max-w-sm"

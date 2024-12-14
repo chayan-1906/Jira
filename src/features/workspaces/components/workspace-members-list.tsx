@@ -18,7 +18,7 @@ function WorkspaceMembersList({members, total}: MembersListProps) {
                     <p className={'text-lg font-semibold'}>Members ({total})</p>
                     <Button variant={'secondary'} size={'icon'} asChild>
                         <Link href={Routes.membersPath(workspaceId)}>
-                            <SettingsIcon className={'size-4 text-neutral-400'}/>
+                            <SettingsIcon className={'size-4'}/>
                         </Link>
                     </Button>
                 </div>
@@ -30,11 +30,11 @@ function WorkspaceMembersList({members, total}: MembersListProps) {
                         return (
                             <li key={$id}>
                                 <Card className={'shadow-none rounded-lg overflow-hidden'}>
-                                    <CardContent className={'flex flex-col items-center gap-x-2 p-3'}>
+                                    <CardContent className={'flex flex-col items-center gap-2 p-3'}>
                                         <MemberAvatar name={name} className={'size-12'}/>
-                                        <div className={'flex flex-col items-center overflow-hidden'}>
-                                            <p className={'text-lg font-medium line-clamp-1'}>{name}</p>
-                                            <p className={'text-lg text-muted-foreground line-clamp-1'}>{email}</p>
+                                        <div className={'flex flex-col items-center w-full'}>
+                                            <p className={'font-normal sm:font-medium text-sm sm:text-base line-clamp-1'}>{name}</p>
+                                            <p className={'w-full text-center text-xs sm:text-sm text-muted-foreground overflow-hidden'}>{email}</p>
                                         </div>
                                     </CardContent>
                                 </Card>

@@ -19,7 +19,7 @@ function Analytics({data}: ProjectAnalyticsResponseType) {
 
     return (
         <ScrollArea className={'border rounded-lg w-full whitespace-nowrap shrink-0'}>
-            <div className={'flex w-full'}>
+            <div className={'flex w-full h-full'}>
                 <div className={'flex flex-1 items-center'}>
                     <AnalyticsCard title={'Total tasks'} value={taskCount} variant={taskDifference > 0 ? 'up' : 'down'} increaseValue={taskDifference}/>
                 </div>

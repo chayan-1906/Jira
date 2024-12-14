@@ -8,6 +8,7 @@ import {Card, CardContent} from "@/components/ui/card";
 import {useCreateProjectModal} from "@/features/projects/hooks/use-create-project-modal";
 import {useWorkspaceId} from "@/features/workspaces/hooks/use-workspace-id";
 import ProjectAvatar from "@/features/projects/components/project-avatar";
+import {ChevronRightIcon} from "@radix-ui/react-icons";
 
 function WorkspaceProjectsList({projects, total}: ProjectsListProps) {
     const {open: createProject} = useCreateProjectModal();
@@ -19,7 +20,7 @@ function WorkspaceProjectsList({projects, total}: ProjectsListProps) {
                 <div className={'flex items-center justify-between'}>
                     <p className={'text-lg font-semibold'}>Projects ({total})</p>
                     <Button variant={'secondary'} size={'icon'} onClick={createProject}>
-                        <PlusIcon className={'size-4 text-neutral-400'}/>
+                        <PlusIcon className={'size-4'}/>
                     </Button>
                 </div>
                 <DottedSeparator className={'my-4'}/>
@@ -31,9 +32,12 @@ function WorkspaceProjectsList({projects, total}: ProjectsListProps) {
                             <li key={$id}>
                                 <Link href={Routes.projectIdPath(workspaceId, $id)}>
                                     <Card className={'shadow-none rounded-lg hover:opacity-75 transition'}>
-                                        <CardContent className={'flex items-center gap-x-2.5 p-4'}>
-                                            <ProjectAvatar name={name} image={imageUrl} className={'size-12'} fallbackClassName={'text-lg'}/>
-                                            <p className={'text-lg font-medium truncate'}>{name}</p>
+                                        <CardContent className={'flex w-full items-center p-4 justify-between'}>
+                                            <div className={'flex gap-2.5 items-center overflow-hidden'}>
+                                                <ProjectAvatar name={name} image={imageUrl} className={'size-12'} fallbackClassName={'text-lg'}/>
+                                                <p className={'text-lg font-medium truncate'}>{name}</p>
+                                            </div>
+                                            <ChevronRightIcon className={'size-8 text-muted-foreground flex-shrink-0'}/>
                                         </CardContent>
                                     </Card>
                                 </Link>

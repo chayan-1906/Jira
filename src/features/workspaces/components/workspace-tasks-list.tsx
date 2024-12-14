@@ -8,6 +8,7 @@ import {useWorkspaceId} from "@/features/workspaces/hooks/use-workspace-id";
 import {Card, CardContent} from "@/components/ui/card";
 import {formatDistanceToNow} from "date-fns";
 import {TasksListProps} from "@/types";
+import {ChevronRightIcon} from "@radix-ui/react-icons";
 
 function WorkspaceTasksList({tasks, total}: TasksListProps) {
     const {open: createTask} = useCreateTaskModal();
@@ -19,7 +20,7 @@ function WorkspaceTasksList({tasks, total}: TasksListProps) {
                 <div className={'flex items-center justify-between'}>
                     <p className={'text-lg font-semibold'}>Tasks ({total})</p>
                     <Button variant={'muted'} size={'icon'} onClick={createTask}>
-                        <PlusIcon className={'size-4 text-neutral-400'}/>
+                        <PlusIcon className={'size-4'}/>
                     </Button>
                 </div>
                 <DottedSeparator className={'my-4'}/>
@@ -31,16 +32,19 @@ function WorkspaceTasksList({tasks, total}: TasksListProps) {
                             <li key={$id}>
                                 <Link href={Routes.taskPath(workspaceId, $id)}>
                                     <Card className={'shadow-none rounded-lg hover:opacity-75 transition'}>
-                                        <CardContent className={'p-4'}>
-                                            <p className={'text-lg font-medium truncate'}>{name}</p>
-                                            <div className={'flex items-center gap-x-2'}>
-                                                <p>{project?.name}</p>
-                                                <div className={'size-1 rounded-full bg-neutral-300'}/>
-                                                <div className={'flex items-center text-sm text-muted-foreground'}>
-                                                    <CalendarIcon className={'size-3 mr-1'}/>
-                                                    <span className={'truncate'}>{formatDistanceToNow(new Date(dueDate))}</span>
+                                        <CardContent className={'flex p-4 justify-between items-center'}>
+                                            <div className={'flex flex-col w-full'}>
+                                                <p className={'text-lg font-medium truncate'}>{name}</p>
+                                                <div className={'flex items-center gap-x-2'}>
+                                                    <p>{project?.name}</p>
+                                                    <div className={'size-1 rounded-full bg-neutral-300'}/>
+                                                    <div className={'flex items-center text-sm text-muted-foreground'}>
+                                                        <CalendarIcon className={'size-3 mr-1'}/>
+                                                        <span className={'truncate'}>{formatDistanceToNow(new Date(dueDate))}</span>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <ChevronRightIcon className={'size-8 text-muted-foreground'}/>
                                         </CardContent>
                                     </Card>
                                 </Link>

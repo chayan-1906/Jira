@@ -10,12 +10,19 @@ import {cn} from "@/lib/utils";
 import {useCreateProjectModal} from "@/features/projects/hooks/use-create-project-modal";
 import ProjectAvatar from "@/features/projects/components/project-avatar";
 import {BASE_URL} from "@/config";
+import PageLoader from "@/components/page-loader";
 
 function Projects() {
     const workspaceId = useWorkspaceId();
-    const {data} = useGetProjects({workspaceId});
+    const {data, isLoading} = useGetProjects({workspaceId});
     const {open} = useCreateProjectModal();
     const pathName = usePathname();
+
+    if (isLoading) {
+        return (
+            <PageLoader className={'h-96'}/>
+        );
+    }
 
     return (
         <div className={'flex flex-col gap-y-2'}>
