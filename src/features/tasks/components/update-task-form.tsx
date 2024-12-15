@@ -76,7 +76,7 @@ function UpdateTaskForm({onCancel, projectOptions, memberOptions, initialValues}
                                 control={form.control}
                                 render={({field}) => (
                                     <FormItem>
-                                        <FormLabel>Task Name</FormLabel>
+                                        <FormLabel>Due Date</FormLabel>
                                         <FormControl>
                                             <DatePicker {...field}/>
                                         </FormControl>
