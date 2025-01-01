@@ -1,4 +1,4 @@
-# Jira
+# Jira (Next.js 15)
 
 
 # Dependencies
@@ -88,3 +88,28 @@ Your app is ready to be deployed!
 
 ### Checkbox - https://ui.shadcn.com/docs/components/checkbox
     npx shadcn@latest add checkbox
+
+
+# Preview
+
+<table>
+    <tr>
+        <td><img src="https://github.com/user-attachments/assets/ebc3f4ea-44ad-4530-9e24-4d8d5293b9bc" alt="Home" width="480px"/></td>
+        <td><img src="https://github.com/user-attachments/assets/dd9189c8-c3d5-48f5-9ddc-a46493e51a2a" alt="Kanban View" width="480px"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/user-attachments/assets/dc6edc56-95f1-4308-8c69-6969fa5b9a24" alt="Calendar View" width="480px"/></td>
+        <td><img src="https://github.com/user-attachments/assets/bd901f1e-178c-4813-a8f4-4d7ecd189764" alt="Project Details" width="480px"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/user-attachments/assets/23431c85-d0f7-4bab-8c4d-36d6ab396fbb" alt="Create Project Modal" width="480px"/></td>
+        <td><img src="https://github.com/user-attachments/assets/c989a758-bc31-4e4f-b342-a1848a54d36f" alt="Create Task Modal" width="480px"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/user-attachments/assets/47fd7a8b-0194-4a44-99b1-a3a3f3978b8d" alt="Task Details" width="480px"/></td>
+        <td><img src="https://github.com/user-attachments/assets/35a2568d-8248-4155-b9bb-21570dbe90d1" alt="Members" width="480px"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/user-attachments/assets/49aea155-2967-49a9-9cdf-1540194ee850" alt="Settings" width="480px"/></td>
+    </tr>
+</table>
