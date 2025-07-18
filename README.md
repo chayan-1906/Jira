@@ -9,7 +9,7 @@
 
 > This is a Next.js 15 Jira clone featuring Appwrite SDK, Hono.js API, and Shadcn UI, with authentication, analytics, Kanban boards, and role-based access control.
 
-![logo](https://github.com/user-attachments/assets/bde7b494-83da-4851-ac44-2488da621793)
+![logo](https://raw.githubusercontent.com/chayan-1906/Jira/master/public/logo.svg)
 
 ## ✨ Features
 
